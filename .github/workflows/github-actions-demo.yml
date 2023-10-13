@@ -1,4 +1,5 @@
-name: Github Actions Demo
+name: Demo Workflow
+# on: workflow_dispatch
 # on: [push]
 on:
   push:
@@ -19,8 +20,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install
-      - name: testing
-        run: npm test
-      - name: linting
-        run: npm run lint
+        run: npm ci
+      - run: npm test
+      - run: npm run lint
