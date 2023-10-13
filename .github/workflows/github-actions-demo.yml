@@ -12,7 +12,7 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - run: echo "triggered by a ${{ github.event_name }} event"
+      # - run: echo "triggered by a ${{ github.event_name }} event"
       - uses: actions/checkout@v4
       - name: Starting node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
