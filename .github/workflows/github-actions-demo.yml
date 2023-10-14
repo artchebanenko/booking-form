@@ -29,12 +29,15 @@ jobs:
       # - name: install modules
       #   run: npm ci
       - run: npm ci
-      # - name: testing
-      #   run: npm test
-      # - run: npm test
-      # - name: linting
-      #   run: npm run lint
-      - name: Test and lint
-        run: |
-          npm test
-          npm run lint
+      # - name: Test and lint
+      #   run: |
+      #     npm test
+      #     npm run lint
+      - run: npm test
+      - run: npm lint
+
+  next-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The job was triggered by a ${{ github.event_name }} event"
+      - run: ls
