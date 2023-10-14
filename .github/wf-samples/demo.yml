@@ -2,16 +2,14 @@ name: Demo Workflow
 
 # events that trigger workflow
 # on: workflow_dispatch
-# on: [ push ]
-# on: [ push, pull_request ]
+# on: [ push ] # [ push, pull_request ]
 on:
   # workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    # types: [opened, synchronize, closed]
-    # types: [opened, edited, reopened]
+    # types: [opened, synchronize, closed] # edited, reopened
     # branches:
     #   - 'main'
     #   - 'releases/**'
@@ -30,12 +28,14 @@ jobs:
       - run: echo "The job was triggered by a ${{ github.event_name }} event"
       - name: Get repo code
         uses: actions/checkout@v4
+
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v3
       #   with:
       #     node-version: ${{ matrix.node-version }}
       #     cache: 'npm'
-      # - name: install modules
+
+      # - name: Install modules
       #   run: npm ci
       - run: npm ci
       # - name: Test and lint
@@ -47,7 +47,6 @@ jobs:
 
   print-context:
     runs-on: ubuntu-latest
-    # needs: init
     steps:
       - run: pwd
       # /home/runner/work/booking-form/booking-form
@@ -59,7 +58,7 @@ jobs:
     # continue-on-error: true
     strategy:
       matrix:
-        # os: [ubuntu-latest]
+        # os: [ubuntu-latest] # windows-latest
         versions-node: [14, 16]
     # runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
@@ -78,4 +77,3 @@ jobs:
         run: npm ci
       - name: Build app
         run: npm run build  
-
