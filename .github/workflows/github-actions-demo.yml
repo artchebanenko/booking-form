@@ -1,25 +1,39 @@
 name: Demo Workflow
+
 # on: workflow_dispatch
-# on: [push]
+# on: [ push ]
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
+    # types: [opened, synchronize, closed]
+
 jobs:
   init:
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [ 18.x ]
+
     steps:
-      # - run: echo "triggered by a ${{ github.event_name }} event"
+      # - run: echo "The job was triggered by a ${{ github.event_name }} event"
       - uses: actions/checkout@v4
-      - name: Starting node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm ci
-      - run: npm test
-      - run: npm run lint
+          cache: 'npm'
+      # - name: install modules
+      #   run: npm ci
+      - run: npm ci
+      # - name: testing
+      #   run: npm test
+      # - run: npm test
+      # - name: linting
+      #   run: npm run lint
+      - run: |
+          npm test
+          npm run lint
