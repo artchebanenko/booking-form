@@ -4,7 +4,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node: 16
+        node: '16'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,4 +21,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-files
-          path: build/
+          path: build/ # path/to/artifact
