@@ -16,6 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print envs deploy
-      run: |
-        echo '${{ env.NODE_ENV }}'
-        echo '${{ env.GH_SECRET }}'
+        run: |
+          echo '${{ env.NODE_ENV }}'
+          echo '${{ env.GH_SECRET }}'
