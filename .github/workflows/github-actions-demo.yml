@@ -77,7 +77,6 @@ jobs:
       node: [14, 16]
     runs-on: ${{ matrix.os }}
     needs: build
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
