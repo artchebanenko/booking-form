@@ -22,19 +22,19 @@ jobs:
   init:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
+    # strategy:
+    #   matrix:
+    #     node-version: [ 18.x ]
 
     steps:
       # ? error here
       # - run: echo "The job was triggered by a ${{ github.event_name }} event"
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      #     cache: 'npm'
       # - name: install modules
       #   run: npm ci
       - run: npm ci
@@ -75,7 +75,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [14, 16]
+        node: [12, 14]
     runs-on: ${{ matrix.os }}
     needs: build
     steps:
